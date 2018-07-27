@@ -13,6 +13,7 @@ class ToDo {
     var taskID:Int?
     var isCompleted:Bool?
     var title:String?
+    var numberOfIncompletes:Int?
     
     convenience init(userID: Int, taskID: Int, isCompleted:Bool, title:String) {
         self.init()
