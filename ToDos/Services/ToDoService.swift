@@ -11,10 +11,10 @@ import Alamofire
 
 class ToDoService {
     var incompleteTodos = [String]()
+    var todos = [ToDo]()
+    var finalTodos = [ToDo]()
     
-    func fetchToDos() -> [ToDo] {
-        var todos = [ToDo]()
-        
+    func fetchToDos(completion: @escaping ([ToDo]?) -> Void) {
         let url = URL(string: "http://jsonplaceholder.typicode.com/todos")
 
         Alamofire.request(url!)
@@ -46,9 +46,28 @@ class ToDoService {
                     if(!isCompleted){
                         self.incompleteTodos.append(String(format: "%i", todoObj.userID!))
                     }
-                    todos.append(todoObj)
+                    self.todos.append(todoObj)
                 }
+                
+                for todo in self.todos{
+                    var counts: [String: Int] = [:]
+                    
+                    for item in self.incompleteTodos {
+                        counts[item] = (counts[item] ?? 0) + 1
+                    }
+                    
+                    for (key, value) in counts {
+                        print("\(key) occurs \(value) time(s)")
+                    }
+                    
+                    let currentStringUserID = String(format: "%i", todo.userID!)
+                    
+                    todo.numberOfIncompletes = counts[currentStringUserID]!
+                    self.finalTodos.append(todo)
+                }
+                
+                self.finalTodos = (self.todos.sorted(by: { $0.numberOfIncompletes! > $1.numberOfIncompletes! }))
+                completion(self.finalTodos)
         }
-        return todos
     }
 }

@@ -16,6 +16,7 @@
 		B42BFE2F210B91A800B9103B /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42BFE2E210B91A800B9103B /* ToDo.swift */; };
 		B42BFE31210B944F00B9103B /* ToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42BFE30210B944F00B9103B /* ToDoCell.swift */; };
 		B42BFE39210B980700B9103B /* ToDoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42BFE38210B980700B9103B /* ToDoService.swift */; };
+		B42BFE3C210BE4D300B9103B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42BFE3B210BE4D300B9103B /* DetailViewController.swift */; };
 		C913E09FF8B21E4804ABD015 /* Pods_ToDos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AD821AB272FC48048DF479B /* Pods_ToDos.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +47,7 @@
 		B42BFE2E210B91A800B9103B /* ToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
 		B42BFE30210B944F00B9103B /* ToDoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCell.swift; sourceTree = "<group>"; };
 		B42BFE38210B980700B9103B /* ToDoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoService.swift; sourceTree = "<group>"; };
+		B42BFE3B210BE4D300B9103B /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				B42BFE10210B918000B9103B /* ViewController.swift */,
+				B42BFE3B210BE4D300B9103B /* DetailViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				B42BFE2F210B91A800B9103B /* ToDo.swift in Sources */,
 				B42BFE11210B918000B9103B /* ViewController.swift in Sources */,
 				B42BFE39210B980700B9103B /* ToDoService.swift in Sources */,
+				B42BFE3C210BE4D300B9103B /* DetailViewController.swift in Sources */,
 				B42BFE0F210B918000B9103B /* AppDelegate.swift in Sources */,
 				B42BFE31210B944F00B9103B /* ToDoCell.swift in Sources */,
 			);

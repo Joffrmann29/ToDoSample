@@ -17,8 +17,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.viewDidLoad()
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        self.todoService = ToDoService()
-        self.todos = todoService.fetchToDos()
+        self.todoService.fetchToDos { (todos) in
+            self.todos = todos!
+            self.tableView.reloadData()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,21 +39,25 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         todoCell.userIDValueLabel.text = String(format: "%i", todo.userID!)
         
-        var counts: [String: Int] = [:]
-        
-        for item in self.todoService.incompleteTodos {
-            counts[item] = (counts[item] ?? 0) + 1
-        }
-        
-        for (key, value) in counts {
-            print("\(key) occurs \(value) time(s)")
-        }
-        
-        let currentStringUserID = String(format: "%@", todo.userID!)
-        
-        todoCell.incompleteToDosLabel.text = String(format: "Incomplete todos: %i", counts[currentStringUserID]!)
+        todoCell.incompleteToDosLabel.text = String(format: "Incomplete todos: %i", todo.numberOfIncompletes!)
         
         return todoCell
+    }
+    
+    // UITableViewDelegate
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        var selectedIndexPath = self.tableView.indexPathForSelectedRow
+        let userID = self.todos[(selectedIndexPath?.row)!].userID!
+        let incompletes = self.todos[(selectedIndexPath?.row)!].numberOfIncompletes!
+        if segue.identifier == "toDetail"{
+            let detailVC = segue.destination as! DetailViewController
+            detailVC.userID = userID
+            detailVC.incompleteToDos = incompletes
+        }
     }
 }
 
