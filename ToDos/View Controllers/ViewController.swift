@@ -57,6 +57,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let detailVC = segue.destination as! DetailViewController
             detailVC.userID = userID
             detailVC.incompleteToDos = incompletes
+            detailVC.todos = self.todos
         }
     }
 }
